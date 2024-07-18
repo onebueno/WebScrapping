@@ -18,20 +18,20 @@ const tokensValidos = new Set([
 ]);
 
 //Funcionalidad para autenticar que los tokens enviados sean validos
-const authenticateToken = (req, res, next ) => {
-    //Se obtiene la cabecera del request authorization
-    const authHeader = req.headers['authorization'];
-    //Se obtiene el token enviado
-    const token = authHeader && authHeader.split(' ')[1];
-    //Validamos que el token exista en nuestra BD de TokensValidos
-    if(!token || !tokensValidos.has(token)){
-        return res.sendStatus(401); // No autorizado
-    }
-    next();
-};
+// const authenticateToken = (req, res, next ) => {
+//     //Se obtiene la cabecera del request authorization
+//     const authHeader = req.headers['authorization'];
+//     //Se obtiene el token enviado
+//     const token = authHeader && authHeader.split(' ')[1];
+//     //Validamos que el token exista en nuestra BD de TokensValidos
+//     if(!token || !tokensValidos.has(token)){
+//         return res.sendStatus(401); // No autorizado
+//     }
+//     next();
+// };
 
 app.use(limiter);
-app.use(authenticateToken); 
+// app.use(authenticateToken); 
 app.use(express.json());
 
 
