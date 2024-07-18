@@ -100,7 +100,8 @@ async function getDataFromTheWorldBank(res){
         
         //Se inicializa un browser
         const browserP = await puppeteer.launch({
-            headless: true
+            headless: true,
+            args: ['--no-sandbox']
         });
         let page;
         //Abrimos una nueva pagina y que se dirija al link de The World Bank
