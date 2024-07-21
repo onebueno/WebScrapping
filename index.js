@@ -1,6 +1,7 @@
 import puppeteer from "puppeteer";
 import express from "express"
 import rateLimit from "express-rate-limit"
+import cors from "cors"
 
 const app = express()
 
@@ -30,6 +31,7 @@ const tokensValidos = new Set([
 //     next();
 // };
 
+app.use(cors())
 app.use(limiter);
 // app.use(authenticateToken); 
 app.use(express.json());
@@ -203,7 +205,7 @@ app.get('/api/ofac', (req, res) => {
     getDataFromOFAC(res);
 })
 
-app.listen(3000,()=>{
-    console.log('Servidor iniciado en puerto 3000');
+app.listen(3001,()=>{
+    console.log('Servidor iniciado en puerto 3001');
 });
 
